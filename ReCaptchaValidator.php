@@ -74,7 +74,7 @@ class ReCaptchaValidator extends Validator
             ['attribute' => $model->getAttributeLabel($attribute)]
         ));
 
-        return "(function(messages){if(!grecaptcha.getResponse()){messages.push('{$message}');}})(messages);";
+        return "(function(messages,attribute){var widget_id=jQuery(attribute.container).data('widget');if(!grecaptcha.getResponse(widget_id)){messages.push('{$message}');}})(messages,attribute);";
     }
 
     /**
