@@ -160,6 +160,10 @@ class ReCaptcha extends InputWidget
             $inputId = 'recaptcha-' . $this->name;
         }
 
+        if (!empty($this->options['id'])) {
+            $inputId = $this->options['id'];
+        }
+
         if (empty($this->jsCallback)) {
             $jsCode = "var recaptchaCallback = function(response){jQuery('#{$inputId}').val(response);};";
         } else {
